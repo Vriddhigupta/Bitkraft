@@ -1,6 +1,7 @@
 const productModel = require("../models/products");
 const fs = require("fs");
 const path = require("path");
+const axios = require('axios');
 
 class Product {
   // Delete Image from uploads -> products folder
@@ -27,18 +28,23 @@ class Product {
     }
   }
 
-  async getAllProduct(req, res) {
-    try {
-      let Products = await productModel
-        .find({})
-        .populate("pCategory", "_id cName")
-        .sort({ _id: -1 });
-      if (Products) {
-        return res.json({ Products });
-      }
-    } catch (err) {
-      console.log(err);
-    }
+   async getAllProduct(req, res) {
+    // try {
+    //   let Products = await productModel
+    //     .find({})
+    //     .populate("pCategory", "_id cName")
+    //     .sort({ _id: -1 });
+    //   if (Products) {
+    //     return res.json({ Products });
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
+
+  
+      axios.get('http://localhost:8003/api/prods').then(Products => {
+        return res.json({"Products" : Products.data})
+      })
   }
 
   async postAddProduct(req, res) {
