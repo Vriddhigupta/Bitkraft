@@ -188,22 +188,28 @@ class Product {
   }
 
   async getSingleProduct(req, res) {
+    // let { pId } = req.body;
+    // if (!pId) {
+    //   return res.json({ error: "All filled must be required" });
+    // } else {
+    //   try {
+    //     let singleProduct = await productModel
+    //       .findById(pId)
+    //       .populate("pCategory", "cName")
+    //       .populate("pRatingsReviews.user", "name email userImage");
+    //     if (singleProduct) {
+    //       return res.json({ Product: singleProduct });
+    //     }
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
     let { pId } = req.body;
-    if (!pId) {
-      return res.json({ error: "All filled must be required" });
-    } else {
-      try {
-        let singleProduct = await productModel
-          .findById(pId)
-          .populate("pCategory", "cName")
-          .populate("pRatingsReviews.user", "name email userImage");
-        if (singleProduct) {
-          return res.json({ Product: singleProduct });
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    axios.get(`http://localhost:8003/api/prods/${pId}`).then(Product => {
+        console.log(Product.data)
+        return res.json({"Product" : Product.data})
+      })
+
   }
 
   async getProductByCategory(req, res) {
