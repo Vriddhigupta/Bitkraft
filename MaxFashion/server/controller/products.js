@@ -28,17 +28,20 @@ class Product {
   }
 
   async getAllProduct(req, res) {
-    try {
-      let Products = await productModel
-        .find({})
-        .populate("pCategory", "_id cName")
-        .sort({ _id: -1 });
-      if (Products) {
-        return res.json({ Products });
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   let Products = await productModel
+    //     .find({})
+    //     .populate("pCategory", "_id cName")
+    //     .sort({ _id: -1 });
+    //   if (Products) {
+    //     return res.json({ Products });
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    axios.get('http://localhost:8003/api/prods').then(Products => {
+        return res.json(Products.data)
+      })
   }
 
   async postAddProduct(req, res) {
