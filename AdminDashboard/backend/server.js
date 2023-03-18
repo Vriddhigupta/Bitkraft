@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 // Custom Imports
 const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
+const connectDb = require("./config/dbConnection");
 
 // Custom Middleware
 app.use(logger);
@@ -13,6 +14,9 @@ app.use(logger);
 // Port Assigned
 const PORT = process.env.PORT || 5000;
 
+//Database connection
+
+connectDb();
 //Middleware
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
