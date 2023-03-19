@@ -6,14 +6,10 @@ const ecommerce_name = "ecommerce_2";
 
 const getEcom2Product = asyncHandler(async (req, res) => {
   try {
-    await Product.find({
-      product: {
-        $elemMatch: {
-          ecommerce_name,
-        },
-      },
+    const response = await Product.find({
+      ecommerce_name: "ecommerce_2",
     });
-    res.status(200).send(JSON.stringify(Product));
+    res.status(200).json(response);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
