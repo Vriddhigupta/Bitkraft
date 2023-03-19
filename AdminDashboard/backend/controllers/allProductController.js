@@ -16,30 +16,31 @@ const getAllProduct = asyncHandler(async (req, res) => {
     });
 
     let data = [];
-    let totalClicks = 0;
-    let temp;
-    for (let i = 0; i < response1.length; i++) {
-      for (let j = 0; j < response2.length; j++) {
-        for (let k = 0; k < response3.length; k++) {
-          if (
-            (response1[i].product_name === response2[j].product_name) ===
-            response3[k].product_name
-          ) {
-            temp = {};
-            temp["product_name"] = response1[i].product_name;
-            totalClicks =
-              response1[i].no_of_clicks +
-              response2[j].no_of_clicks +
-              response3[k].no_of_clicks;
+    // let totalClicks = 0;
+    // let temp;
+    // for (let i = 0; i < response1.length; i++) {
+    //   for (let j = 0; j < response2.length; j++) {
+    //     for (let k = 0; k < response3.length; k++) {
+    //       if (
+    //         (response1[i].product_name === response2[j].product_name) ===
+    //         response3[k].product_name
+    //       ) {
+    //         temp = {};
+    //         temp["product_name"] = response1[i].product_name;
+    //         totalClicks =
+    //           response1[i].no_of_clicks +
+    //           response2[j].no_of_clicks +
+    //           response3[k].no_of_clicks;
 
-            temp["no_of_clicks"] = totalClicks;
+    //         temp["no_of_clicks"] = totalClicks;
 
-            console.log("Temp" + temp);
-            data.push(temp);
-          }
-        }
-      }
-    }
+    //         console.log("Temp" + temp);
+    //         data.push(temp);
+    //       }
+    //     }
+    //   }
+    // }
+    data.push(response1, response2, response3);
     console.log(data);
     res.status(200).json(data);
   } catch (err) {
