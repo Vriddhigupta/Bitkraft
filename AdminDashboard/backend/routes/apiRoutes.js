@@ -1,11 +1,9 @@
 const express = require("express");
-const {
-  getAllProduct,
-  postAllProduct,
-} = require("../controllers/allProductController");
 const router = express.Router();
 
 // Custom Imports
+
+const getAllProduct = require("../controllers/allProductController");
 
 const {
   getEcom1Product,
@@ -19,6 +17,10 @@ const {
   getEcom3Product,
   postEcom3Product,
 } = require("../controllers/ecom3Controller");
+
+// All Products
+
+router.get("/", getAllProduct);
 
 // Ecommerce-1
 
@@ -34,11 +36,5 @@ router.post("/ecom2/", postEcom2Product);
 
 router.get("/ecom3/", getEcom3Product);
 router.post("/ecom3/", postEcom3Product);
-
-// All Products
-
-router.get("/", getAllProduct);
-
-router.post("/", postAllProduct);
 
 module.exports = router;

@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   ecommerce_name: { type: String, required: true },
-  no_of_clicks: { type: Number, required: true, default: 0 },
+  no_of_clicks: { type: Number, required: true, default: 1 },
 });
 
 const Product = new mongoose.model("Product", productSchema);

@@ -36,16 +36,19 @@ const postEcom1Product = asyncHandler(async (req, res) => {
     ) {
       // Save the product unique click to mongodb
       const response = await Product.find({ product_name: pName });
-      if (response != null) {
+      console.log(response);
+      if (response.length != 0) {
         await Product.findOneAndUpdate(
           { product_name: pName },
           { $inc: { no_of_clicks: 1 } }
         );
       } else {
-        await Product.insert({
+        await Product.create({
           product_name: pName,
           ecommerce_name: ecommerce_name,
           no_of_clicks: 1,
+        }).then(() => {
+          console.log("Product added successfully");
         });
       }
       res.status(200).send({ message: "Product updated successfully" });
