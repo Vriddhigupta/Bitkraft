@@ -31,6 +31,7 @@ const Login = (props) => {
           password: "",
         });
       } else if (responseData.token) {
+        localStorage.setItem("email", data.email);
         setData({ email: "", password: "", loading: false, error: false });
         localStorage.setItem("jwt", JSON.stringify(responseData));
         window.location.href = "/";
