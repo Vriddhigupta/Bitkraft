@@ -1,9 +1,19 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 
 import "./HomePage.css";
 
 function HomePage() {
+  const [data, setData] = useState([]);
+  const fetchData = async () => {
+    const response = await fetch("http://localhost:5000/api/");
+    const jsonData = await response.json();
+    setData(jsonData);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const handleClick = (event) => {
     console.log(event.target.name);
     if (event.target.name === "Home") {
@@ -73,11 +83,11 @@ function HomePage() {
       </div>
 
       <div className="container">
-        {cards.map((card) => (
-          <div key={card.id} className="card">
+        {data.map((card) => (
+          <div key={card._id} className="card">
             <span>
-              <h2 style={{ display: "inline" }}>{card.title}</h2>
-              <p style={{ display: "inline" }}>{card.description}</p>
+              <h2 style={{ display: "inline" }}>{card.product_name}</h2>
+              <p style={{ display: "inline" }}>{card.no_of_click}</p>
             </span>
           </div>
         ))}

@@ -22,7 +22,6 @@ const getEcom2Product = asyncHandler(async (req, res) => {
 
 const postEcom2Product = asyncHandler(async (req, res) => {
   const { pName, email } = req.body;
-  const ecommerce_name = "ecommerce_2";
   const ipAddr = req.ip;
 
   const comb_1 = `${pName}:${ecommerce_name}:${ipAddr}:${email}`;
@@ -36,7 +35,10 @@ const postEcom2Product = asyncHandler(async (req, res) => {
       (await redisClient.sadd([comb_3, comb_3]))
     ) {
       // Save the product unique click to mongodb
-      const response = await Product.find({ product_name: pName });
+      const response = await Product.find({
+        product_name: pName,
+        ecommerce_name: ecommerce_name,
+      });
       console.log(response);
       if (response.length != 0) {
         await Product.findOneAndUpdate(

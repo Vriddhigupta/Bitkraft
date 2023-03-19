@@ -4,7 +4,7 @@ import "./Ecomm3.css";
 function Ecomm3() {
   const [data, setData] = useState([]);
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/api/ecom1");
+    const response = await fetch("http://localhost:5000/api/ecom3");
     const jsonData = await response.json();
     setData(jsonData);
   };
