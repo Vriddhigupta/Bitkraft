@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import { getAllProduct } from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
-import axios from 'axios';
-
+import axios from "axios";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -38,17 +37,15 @@ const SingleProduct = (props) => {
     }
   };
 
-  const sendClickEvent = (pName) => {
-
-    var email = localStorage.getItem("email")
-    if(email!==null)
-    {
-      axios.post('http://localhost:5000/api/ecom1/ ', {
-      email,
-      pName
-    })
+  const sendClickEvent = async (pName) => {
+    var email = localStorage.getItem("email");
+    if (email !== null) {
+      await axios.post("http://localhost:5000/api/ecom1/ ", {
+        email,
+        pName,
+      });
     }
-  }
+  };
 
   if (data.loading) {
     return (
@@ -77,11 +74,10 @@ const SingleProduct = (props) => {
           return (
             <Fragment key={index}>
               <div className="relative col-span-1 m-2">
-                <img 
-                  
-                  onClick = {(e) => {
-                    sendClickEvent(item.pName)
-                    history.push(`/products/${item._id}`)
+                <img
+                  onClick={(e) => {
+                    sendClickEvent(item.pName);
+                    history.push(`/products/${item._id}`);
                   }}
                   className="w-full object-cover object-center cursor-pointer"
                   src={`${item.pImages[0]}`}

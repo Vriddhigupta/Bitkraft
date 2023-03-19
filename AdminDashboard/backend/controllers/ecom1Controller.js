@@ -2,17 +2,14 @@ const asyncHandler = require("express-async-handler");
 const { redisClient } = require("../config/redis");
 
 const Product = require("../models/productClickModel");
+
 const ecommerce_name = "ecommerce_1";
 const getEcom1Product = asyncHandler(async (req, res) => {
   try {
-    await Product.find({
-      product: {
-        $elemMatch: {
-          ecommerce_name,
-        },
-      },
+    const response = await Product.find({
+      ecommerce_name: "ecommerce_1",
     });
-    res.status(200).send(JSON.stringify(Product));
+    res.status(200).json(response);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
@@ -26,7 +23,7 @@ const postEcom1Product = asyncHandler(async (req, res) => {
 
   const comb_1 = `${pName}:${ecommerce_name}:${ipAddr}:${email}`;
   const comb_2 = `${pName}:${ecommerce_name}:${email}`;
-  const comb_3 = `${pName}:${ipAddr}`;
+  const comb_3 = `${pName}:${ecommerce_name}:${ipAddr}`;
 
   try {
     if (
