@@ -7,11 +7,11 @@ const Products = [
       "pSold": 0,
       "pQuantity": 5,
       "pImages": [
-        "1679126269491_m_613a62afce1e87f694a33de4.jpg",
-        "1679126269497_s_60653e5cbcdb2f27a661b63c.jpg"
+        "https://img.faballey.com/images/Product/ILL00323Z/d3.jpg",
+        "https://img.faballey.com/images/Product/ILL00323Z/d3.jpg"
       ],
       "pOffer": "10",
-      "_id": "64156efdeac3a031442080d7",
+      "_id": "1",
       "pName": "Pink Dress by Zara",
       "pDescription": "Pink Satin dress by Zara - floral print",
       "pPrice": 1800,
@@ -42,7 +42,7 @@ const Products = [
           "https://cdn16.nnnow.com/web-images/large/styles/GOI8OKZRP7R/1609758143103/1.jpg"
         ],
         "pOffer": "10",
-        "_id": "64156efdeac3a031442080d7",
+        "_id": "2",
         "pName": "Blue Shirt by SansClothing",
         "pDescription": "Blue Shirt by SansClothing - Strips Shirt",
         "pPrice": 1800,
@@ -69,13 +69,13 @@ const Products = [
         "pSold": 0,
         "pQuantity": 5,
         "pImages": [
-          "1679126269491_m_613a62afce1e87f694a33de4.jpg",
-          "1679126269497_s_60653e5cbcdb2f27a661b63c.jpg"
+          "https://assets.ajio.com/medias/sys_master/root/20210106/puVB/5ff57c287cdb8c1f141e08a0/-473Wx593H-461017784-yellow-MODEL.jpg",
+          "https://assets.ajio.com/medias/sys_master/root/20210106/puVB/5ff57c287cdb8c1f141e08a0/-473Wx593H-461017784-yellow-MODEL.jpg"
         ],
         "pOffer": "10",
-        "_id": "64156efdeac3a031442080d7",
-        "pName": "Pink Dress by Zara",
-        "pDescription": "Pink Satin dress by Zara - floral print",
+        "_id": "3",
+        "pName": "Yellow Trouser by Zara - plain",
+        "pDescription": "Yellow Trouser by Zara - plain",
         "pPrice": 1800,
         "pCategory": {
           "_id": "64156dfdeac3a031442080d1",
@@ -100,13 +100,13 @@ const Products = [
         "pSold": 0,
         "pQuantity": 5,
         "pImages": [
-          "1679126269491_m_613a62afce1e87f694a33de4.jpg",
-          "1679126269497_s_60653e5cbcdb2f27a661b63c.jpg"
+          "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71f-S4cIeuL._UX569_.jpg",
+          "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71f-S4cIeuL._UX569_.jpg"
         ],
         "pOffer": "10",
-        "_id": "64156efdeac3a031442080d7",
-        "pName": "Pink Dress by Zara",
-        "pDescription": "Pink Satin dress by Zara - floral print",
+        "_id": "4",
+        "pName": "Black Hat by Balenciaga",
+        "pDescription": "Black Hat by Balenciaga",
         "pPrice": 1800,
         "pCategory": {
           "_id": "64156dfdeac3a031442080d1",
@@ -131,13 +131,13 @@ const Products = [
         "pSold": 0,
         "pQuantity": 5,
         "pImages": [
-          "1679126269491_m_613a62afce1e87f694a33de4.jpg",
-          "1679126269497_s_60653e5cbcdb2f27a661b63c.jpg"
+          "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/5138zp81tpL._UX569_.jpg",
+          "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/5138zp81tpL._UX569_.jpg"
         ],
         "pOffer": "10",
-        "_id": "64156efdeac3a031442080d7",
-        "pName": "Pink Dress by Zara",
-        "pDescription": "Pink Satin dress by Zara - floral print",
+        "_id": "5",
+        "pName": "Black Shades",
+        "pDescription": "Black Shades",
         "pPrice": 1800,
         "pCategory": {
           "_id": "64156dfdeac3a031442080d1",
@@ -162,6 +162,15 @@ const Products = [
 
 app.get('/api/prods', (req, res) => {
   res.send(Products);
+});
+
+app.get('/api/prods/:id', (req, res) => {
+  for (let i = 0; i < Products.length; i++) {
+    if(Products[i]["_id"].valueOf() === req.params.id.valueOf())
+    {
+      return res.send(Products[i])
+    }
+  }
 });
 
 // Start the server
