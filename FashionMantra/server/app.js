@@ -42,7 +42,7 @@ CreateAllFolder();
 
 // Database Connection
 mongoose
-  .connect(`mongodb+srv://hustler2801:${password}@cluster0.xye7m9m.mongodb.net/kapdabazaar?retryWrites=true&w=majority`, {
+  .connect(`mongodb+srv://hustler2801:${password}@cluster0.xye7m9m.mongodb.net/ecommerce?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
