@@ -15,8 +15,8 @@ const getAllProduct = asyncHandler(async (req, res) => {
       ecommerce_name: "ecommerce_3",
     });
 
-    console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
-    console.log(response1.length)
+    console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+    console.log(response1.length);
 
     let data = [];
     // let totalClicks = 0;
@@ -48,30 +48,34 @@ const getAllProduct = asyncHandler(async (req, res) => {
     */
     // let clicks = 0;
     // for (let i = 0; i < response1.length; i++) {
-    //   clicks += response1[i].no_of_clicks;
+    //   for (let j = 0; j < response2.length; j++) {
+    //     for (let k = 0; k < response3.length; k++) {
+    //       if (
+    //         (response1[i].product_name === response2[j].product_name) ===
+    //         response3[k].product_name
+    //       ) {
+    //         temp = {};
+    //         temp["product_name"] = response1[i].product_name;
+    //         totalClicks =
+    //           response1[i].no_of_clicks +
+    //           response2[j].no_of_clicks +
+    //           response3[k].no_of_clicks;
+
+    //         temp["no_of_clicks"] = totalClicks;
+
+    //         console.log("Temp" + temp);
+    //         data.push(temp);
+    //       }
+    //     }
+    //   }
     // }
-
-    // for (let i = 0; i < response2.length; i++) {
-    //   clicks += response2[i].no_of_clicks;
-    // }
-
-    // for (let i = 0; i < response3.length; i++) {
-    //   clicks += response3[i].no_of_clicks;
-    // }
-
-    // res.status(200).json({
-    //   product_name: response1[0].product_name,
-    // });
-
-    // @todo : logic for addition
-
-    data.push(response1,response2,response3)
+    data.push(response1, response2, response3);
+    console.log(data);
     res.status(200).json(data);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
   }
-
 });
 
 module.exports = getAllProduct;

@@ -77,16 +77,16 @@ function Ecomm1() {
         </div>
       </nav>
 
-      {/* <div className="search-box">
+      <div className="search-box">
         <button className="btn-search">
-          <img src="./search.png" />
+          Search<i className="ri-search-2-line"></i>
         </button>
         <input
           type="text"
           className="input-search"
           placeholder="Type to Search..."
         />
-      </div> */}
+      </div>
 
       <div className="container">
         {data.map((card) => (

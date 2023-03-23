@@ -32,7 +32,10 @@ const postEcom3Product = asyncHandler(async (req, res) => {
       (await redisClient.sadd([comb_3, comb_3]))
     ) {
       // Save the product unique click to mongodb
-      const response = await Product.find({ product_name: pName });
+      const response = await Product.find({
+        product_name: pName,
+        ecommerce_name: ecommerce_name,
+      });
       console.log(response);
       if (response.length != 0) {
         await Product.findOneAndUpdate(

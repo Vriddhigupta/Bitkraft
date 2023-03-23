@@ -1,7 +1,7 @@
 const productModel = require("../models/products");
 const fs = require("fs");
 const path = require("path");
-const axios = require('axios');
+const axios = require("axios");
 
 class Product {
   // Delete Image from uploads -> products folder
@@ -28,7 +28,7 @@ class Product {
     }
   }
 
-   async getAllProduct(req, res) {
+  async getAllProduct(req, res) {
     // try {
     //   let Products = await productModel
     //     .find({})
@@ -41,10 +41,9 @@ class Product {
     //   console.log(err);
     // }
 
-  
-      axios.get('http://localhost:8003/api/prods').then(Products => {
-        return res.json({"Products" : Products.data})
-      })
+    axios.get("http://localhost:8003/api/prods").then((Products) => {
+      return res.json({ Products: Products.data });
+    });
   }
 
   async postAddProduct(req, res) {
@@ -205,11 +204,10 @@ class Product {
     //   }
     // }
     let { pId } = req.body;
-    axios.get(`http://localhost:8003/api/prods/${pId}`).then(Product => {
-        console.log(Product.data)
-        return res.json({"Product" : Product.data})
-      })
-
+    axios.get(`http://localhost:8003/api/prods/${pId}`).then((Product) => {
+      console.log(Product.data);
+      return res.json({ Product: Product.data });
+    });
   }
 
   async getProductByCategory(req, res) {

@@ -35,18 +35,19 @@ const customizeRouter = require("./routes/customize");
 // Import Auth middleware for check user login or not~
 const { loginCheck } = require("./middleware/auth");
 const CreateAllFolder = require("./config/uploadFolderCreateScript");
-const password = "LkAYOcrDxVL2oIVx"
+const password = "LkAYOcrDxVL2oIVx";
 
 /* Create All Uploads Folder if not exists | For Uploading Images */
 CreateAllFolder();
 
 // Database Connection
 mongoose
-  .connect(`mongodb+srv://hustler2801:${password}@cluster0.xye7m9m.mongodb.net/ecommerce?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
+  .connect(
+    `mongodb+srv://hustler2801:${password}@cluster0.xye7m9m.mongodb.net/ecommerce?retryWrites=true&w=majority`,
+    {
+      useUnifiedTopology: true,
+    }
+  )
   .then(() =>
     console.log(
       "==============Mongodb Database Connected Successfully=============="
