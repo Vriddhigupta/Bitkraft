@@ -14,7 +14,7 @@ function Ecomm2() {
   const handleClick = (event) => {
     console.log(event.target.name);
     if (event.target.name === "Home") {
-      window.location.href = "http://localhost:3003/home";
+      window.location.href = "http://localhost:3003/";
     } else if (event.target.name === "FashionMantra") {
       window.location.href = "http://localhost:3003/ecomm1";
     } else if (event.target.name === "KapdaBazaar") {
@@ -35,28 +35,46 @@ function Ecomm2() {
 
   return (
     <div>
-       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="#">Navbar</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item active">
-        <a className="nav-link" href="http://localhost:3000/home">Home <span className="sr-only">(current)</span></a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="http://localhost:3000/ecomm1">FashionMantra</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="http://localhost:3000/ecomm2">KapdaBazaar</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="http://localhost:3000/ecomm3">MaxFashion</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">
+          Navbar
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <a className="nav-link" href="http://localhost:3000/">
+                Home <span className="sr-only">(current)</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="http://localhost:3000/ecomm1">
+                FashionMantra
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="http://localhost:3000/ecomm2">
+                KapdaBazaar
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="http://localhost:3000/ecomm3">
+                MaxFashion
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
       {/* <div className="search-box">
         <button className="btn-search">
@@ -74,7 +92,9 @@ function Ecomm2() {
           <div key={card._id} className="card">
             <span>
               <h2 style={{ display: "inline" }}>{card.product_name}</h2>
-              <p style={{ display: "inline", fontSize:"30px" }}>{card.no_of_clicks}</p>
+              <p style={{ display: "inline", fontSize: "30px" }}>
+                {card.no_of_clicks}
+              </p>
             </span>
           </div>
         ))}

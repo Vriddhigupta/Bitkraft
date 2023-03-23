@@ -15,8 +15,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Routes>
-            <Route exact path="/" element={<Login />} />
-            <Route path="/home" element={<HomePage />} />
+            <Route exact path="/" element={<HomePage />} />
             <Route path="/ecomm2" element={<Ecomm2 />} />
             <Route path="/ecomm3" element={<Ecomm3 />} />
             <Route path="/ecomm1" element={<Ecomm1 />} />
