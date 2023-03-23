@@ -5,6 +5,9 @@
     font-family: 'Prompt',sans-serif;
 }
 body{
+  display: grid;
+  place-items: center;
+  text-align: center;
     overflow-y: hidden ! important;
     overflow-x: hidden ! important;
     background-repeat: no-repeat;

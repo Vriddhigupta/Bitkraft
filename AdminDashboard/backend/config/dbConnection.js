@@ -3,7 +3,7 @@ require("dotenv").config();
 const connectDb = async () => {
   try {
     mongoose
-      .connect(process.env.CONNECTION_STRING, {
+      .connect('mongodb+srv://hustler2801:LkAYOcrDxVL2oIVx@cluster0.xye7m9m.mongodb.net/ecommerce?retryWrites=true&w=majority', {
         useUnifiedTopology: true,
       })
       .then(() =>
