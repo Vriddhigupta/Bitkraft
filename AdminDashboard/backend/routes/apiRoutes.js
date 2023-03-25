@@ -3,6 +3,8 @@ const router = express.Router();
 
 // Custom Imports
 
+const loginController = require("../controllers/loginController");
+const registerController = require("../controllers/registerationController");
 const getAllProduct = require("../controllers/allProductController");
 
 const {
@@ -36,5 +38,11 @@ router.post("/ecom2/", postEcom2Product);
 
 router.get("/ecom3/", getEcom3Product);
 router.post("/ecom3/", postEcom3Product);
+
+// Login
+router.post("/login/", loginController);
+
+// Register
+router.post("/register/", registerController);
 
 module.exports = router;

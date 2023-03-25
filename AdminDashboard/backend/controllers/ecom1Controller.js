@@ -20,6 +20,19 @@ const postEcom1Product = asyncHandler(async (req, res) => {
   const { pName, email } = req.body;
 
   const ipAddr = req.ip;
+  console.log("Dashboard IP: " + ipAddr);
+
+  const respo = await Product.find({
+    product_name: pName,
+    ecommerce_name: ecommerce_name,
+  });
+
+  if (respo.length != 0) {
+    await Product.findOneAndUpdate(
+      { product_name: pName, ecommerce_name: ecommerce_name },
+      { $inc: { total_clicks: 1 } }
+    );
+  }
 
   const comb_1 = `${pName}:${ecommerce_name}:${ipAddr}:${email}`;
   const comb_2 = `${pName}:${ecommerce_name}:${email}`;
@@ -39,7 +52,7 @@ const postEcom1Product = asyncHandler(async (req, res) => {
       console.log(response);
       if (response.length != 0) {
         await Product.findOneAndUpdate(
-          { product_name: pName },
+          { product_name: pName, ecommerce_name: ecommerce_name },
           { $inc: { no_of_clicks: 1 } }
         );
       } else {

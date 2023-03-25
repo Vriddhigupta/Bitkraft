@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
 const connectDb = require("./config/dbConnection");
+const { connectRabbit } = require("./config/rabbitMq");
 
 // Custom Middleware
 // app.use(logger);
@@ -17,6 +18,7 @@ const PORT = process.env.PORT || 5000;
 //Database connection
 
 connectDb();
+connectRabbit();
 
 //Middleware
 app.use(cors());

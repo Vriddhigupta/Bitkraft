@@ -21,6 +21,18 @@ const postEcom3Product = asyncHandler(async (req, res) => {
   const ecommerce_name = "ecommerce_3";
   const ipAddr = req.ip;
 
+  const respo = await Product.find({
+    product_name: pName,
+    ecommerce_name: ecommerce_name,
+  });
+
+  if (respo.length != 0) {
+    await Product.findOneAndUpdate(
+      { product_name: pName, ecommerce_name: ecommerce_name },
+      { $inc: { total_clicks: 1 } }
+    );
+  }
+
   const comb_1 = `${pName}:${ecommerce_name}:${ipAddr}:${email}`;
   const comb_2 = `${pName}:${ecommerce_name}:${email}`;
   const comb_3 = `${pName}:${ipAddr}`;
